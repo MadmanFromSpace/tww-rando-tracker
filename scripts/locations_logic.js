@@ -29,9 +29,9 @@ function initializeLocationsChecked() {
 }
 
 function isValidForLocation(generalLocation, detailedLocation, isDungeon) {
-    if (islands.includes(generalLocation) && dungeons.includes(generalLocation)) {
+    if (islands.toString().includes(generalLocation) && dungeons.toString().includes(generalLocation)) {
         var fullName = getFullLocationName(generalLocation, detailedLocation);
-        return isDungeon == itemLocations[fullName].Types.includes('Dungeon');
+        return isDungeon == itemLocations[fullName].Types.toString().includes('Dungeon');
     }
     return true;
 }
@@ -96,7 +96,7 @@ function checkRequirementMet(reqName) {
     if (isProgressiveRequirement(reqName)) {
         return checkProgressiveItemRequirementRemaining(reqName, items) <= 0;
     }
-    if (reqName.startsWith('Can Access Other Location "')) {
+    if (reqName.toString().startsWith('Can Access Other Location "')) {
         return checkOtherLocationReq(reqName);
     }
     if (reqName in items) {
@@ -116,10 +116,10 @@ function checkRequirementMet(reqName) {
 }
 
 function isProgressiveRequirement(reqName) {
-    return reqName.startsWith('Progressive')
-        || reqName.includes('Small Key x')
-        || reqName.startsWith('Triforce Shard')
-        || reqName.startsWith('Tingle Statue');
+    return reqName.toString().startsWith('Progressive')
+        || reqName.toString().includes('Small Key x')
+        || reqName.toString().startsWith('Triforce Shard')
+        || reqName.toString().startsWith('Tingle Statue');
 }
 
 function checkProgressiveItemRequirementRemaining(reqName, itemSet) {
@@ -189,9 +189,9 @@ function isLocationProgress(locationName) {
         var type = types[i];
         if (!isRandomCharts
             && type == 'Sunken Treasure'
-            && itemLocations[locationName]['Original item'].startsWith('Triforce Shard')) {
-            return flags.includes('Sunken Triforce');
-        } else if (!flags.includes(type)) {
+            && itemLocations[locationName]['Original item'].toString().startsWith('Triforce Shard')) {
+            return flags.toString().includes('Sunken Triforce');
+        } else if (!flags.toString().includes(type)) {
             return false;
         }
     }

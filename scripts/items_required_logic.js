@@ -5,7 +5,8 @@ function itemsRequiredForOtherLocation(reqName) {
 }
 
 function itemsForRequirement(reqName) {
-    if (impossibleItems.includes(reqName) || reqName == 'Impossible') {
+    reqName = reqName.toString();
+    if (impossibleItems.toString().includes(reqName) || reqName == 'Impossible') {
         var requiredItems = 'Impossible';
         var reqMet = false;
         var remainingProgress = NaN;
@@ -18,7 +19,7 @@ function itemsForRequirement(reqName) {
         } else {
             var requiredItems = reqName; // don't replace names yet. we do some logic with them and then replace them later
         }
-    } else if (reqName.startsWith('Can Access Other Location "')) {
+    } else if (reqName.toString().startsWith('Can Access Other Location "')) {
         return itemsRequiredForOtherLocation(reqName);
     } else if (reqName in items) {
         var reqMet = items[reqName] > 0;
@@ -212,14 +213,14 @@ function getProgressiveItemChildren(itemsReq, expressionType) {
         var curItem = itemsReq[i];
         var curReq = curItem.items;
         if (!Array.isArray(curReq)) {
-            addProgressiveChildrenForReq(newItems, curReq, expressionType);
+            addProgressiveChildrenForReq(newItems, curReq.toString(), expressionType);
         }
     }
     return newItems;
 }
 
 function addProgressiveChildrenForReq(newItems, curReq, expressionType) {
-    if (curReq.startsWith('Progressive') || curReq.includes('Small Key x')) {
+    if (curReq.toString().startsWith('Progressive') || curReq.toString().includes('Small Key x')) {
         var itemName = getProgressiveItemName(curReq);
         var reqCount = getProgressiveNumRequired(curReq);
         if (expressionType == 'OR') { // if the expression type is OR, we add higher level children

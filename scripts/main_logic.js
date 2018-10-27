@@ -367,7 +367,7 @@ function isMainDungeon(dungeonName) {
     if (dungeonName == 'Forsaken Fortress' || dungeonName == "Ganon's Tower") {
         return false;
     }
-    return dungeons.includes(dungeonName);
+    return dungeons.toString().includes(dungeonName);
 }
 
 function getNameForItem(itemName) {
@@ -430,7 +430,7 @@ function getNameForItem(itemName) {
         }
     } else if (itemName == "Boat's Sail") {
         return 'Swift Sail';
-    } else if (isRandomCharts && (itemName.startsWith('Triforce Chart') || itemName.startsWith('Treasure Chart'))) {
+    } else if (isRandomCharts && (itemName.toString().startsWith('Triforce Chart') || itemName.toString().startsWith('Treasure Chart'))) {
         var islandIndex = charts.indexOf(itemName);
         return 'Chart for ' + islands[islandIndex];
     }

@@ -104,7 +104,7 @@ function checkAddFlags(param, flagsToAdd) {
     if (getParamBool(param, false)) {
         for (var i = 0; i < flagsToAdd.length; i++) {
             var curFlag = flagsToAdd[i];
-            if (!flags.includes(curFlag)) {
+            if (!flags.toString().includes(curFlag)) {
                 flags.push(curFlag);
             }
         }

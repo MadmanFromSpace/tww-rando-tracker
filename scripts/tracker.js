@@ -169,7 +169,7 @@ function refreshAllImagesAndCounts() {
         var l = 'chart' + i.toString();
         var chartName = charts[i];
         var chartCount = items[chartName];
-        if (!isRandomCharts && chartName.includes('Triforce')) {
+        if (!isRandomCharts && chartName.toString().includes('Triforce')) {
             if (chartCount === 1) {
                 document.getElementById(l).style.backgroundImage = 'url(\'' + imageDir + 'triforcechartopen.png\')';
             } else {
@@ -233,7 +233,7 @@ function clearItemInfo() {
 
 function itemInfo(element) {
     var text = element.name;
-    if (text.startsWith('Progressive')) {
+    if (text.toString().startsWith('Progressive')) {
         var itemCount = items[text];
         var textWithCount = text + ' x' + itemCount;
         text = getNameForItem(textWithCount);
@@ -292,7 +292,7 @@ function toggleKey(element, maxKeys, dungeonIndex) {
     }
     keys[keyName] = keyCount;
     dataChanged();
-    if (keyName.includes('Small')) {
+    if (keyName.toString().includes('Small')) {
         smallKeyInfo(element, maxKeys);
     }
     dungeonMapInfo(dungeonIndex);
