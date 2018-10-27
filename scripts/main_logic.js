@@ -318,7 +318,7 @@ function loadItemLocations() {
 }
 
 function getLogicFilesUrl() {
-    return 'https://raw.githubusercontent.com/LagoLunatic/wwrando/' + versionParam + '/logic/';
+    return 'https://raw.githubusercontent.com/MadmanFromSpace/tww-rando-tracker/' + versionParam + '/logic/';
 }
 
 function afterLoad() {
